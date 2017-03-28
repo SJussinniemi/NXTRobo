@@ -12,15 +12,22 @@ import lejos.robotics.objectdetection.RangeFeatureDetector;
 public class UltraAnturi implements Runnable, FeatureListener {
 
 	//asBoolea kun este on havaittu ajetaanko t‰ll‰ booleanilla k‰‰ntyminen?
-	boolean havaittu;
+	private static boolean havaittu;
 	
-	//public static int MAX_DETECT = 60;
 	
 	UltraAnturi listener; //UltraAnturi();
 	//UltrasonicSensor sensori = new UltrasonicSensor(SensorPort.S1);
 	
 	Moottori motti;
 	UltrasonicSensor us;
+	
+	public static boolean isHavaittu() {
+		return havaittu;
+	}
+
+	public static void setHavaittu(boolean havaittu) {
+		UltraAnturi.havaittu = havaittu;
+	}
 	
 	//kannetaan Moottoriolio UltraAnturi luokkaan
 	public UltraAnturi(Moottori m){
@@ -32,7 +39,7 @@ public class UltraAnturi implements Runnable, FeatureListener {
 		
 		listener = ua;
 		UltrasonicSensor us = new UltrasonicSensor(SensorPort.S1);
-		RangeFeatureDetector fd = new RangeFeatureDetector(us, Ajoluokka.MAX_DETECT, 500);
+		RangeFeatureDetector fd = new RangeFeatureDetector(us, Ajoluokka.MAX_DETECT, 400);
 		fd.addListener(listener);
 		//Button.ENTER.waitForPressAndRelease();
 	}
@@ -42,7 +49,6 @@ public class UltraAnturi implements Runnable, FeatureListener {
 
 		while(Ajoluokka.ajossa == true){
 
-
 			try {
 				Thread.sleep(400);
 			} catch (InterruptedException e) {
@@ -50,19 +56,19 @@ public class UltraAnturi implements Runnable, FeatureListener {
 				e.printStackTrace();
 			}
 
-
 			LCD.drawString("Etaisyys: ", 0, 2);
 			LCD.drawInt(us.getDistance(), 0, 3);
 			
-
 		}
 
 	}
+	
 	// t‰m‰ tapahtuu kun havaitaan este.
 	public void featureDetected(Feature feature, FeatureDetector detector) {
 		// TODO Auto-generated method stub
 		//LCD.drawString("STOPEtaisyys: ", 0, 2);
-		listener.havaittu = true;
+		UltraAnturi.setHavaittu(true); // Lopettaa viivanhaistelun suorittamisen 
+		Ajoluokka.ajossa = false; // 
 		motti.pysahdyRobo();
 		
 		

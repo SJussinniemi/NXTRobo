@@ -7,8 +7,7 @@ public class Moottori {
 
 	private int vakionopeus = 250;
 	private int peruutusnopeus = 10;
-	// Viivanseurauksessa renkaanpyörimisnopeus 
-	//kun korjataan roboton positiota viivalla
+	// Viivanseurauksessa renkaanpyörimisnopeus kun korjataan roboton positiota viivalla
 	private int korjausnopeus = 100; 
 	private int nopeustaakse = 20;
 	private int estenopeus = 100;
@@ -70,10 +69,10 @@ public class Moottori {
 		LCD.clear();
 		LCD.drawString("Olen Pysahdorobo metodissa", 0, 0);
 		
-		//Motor.B.stop();
-		//Motor.C.stop();
-		Motor.B.flt();
-		Motor.C.flt();
+		Motor.B.stop();
+		Motor.C.stop();
+		//Motor.B.flt();
+		//Motor.C.flt();
 	}
 	
 	public void kaannyVasen(){

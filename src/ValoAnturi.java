@@ -1,6 +1,7 @@
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
+import lejos.nxt.ListenerCaller;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 
@@ -22,9 +23,8 @@ public class ValoAnturi implements Runnable {
 		// TODO Auto-generated method stub
 		while(Ajoluokka.ajossa == true){
 
-
 			// Silkkaa kokeilujöötiä tän kanssa Seuraa nyt oikeaa puolta
-			while(!Button.ESCAPE.isDown()){
+			while(UltraAnturi.isHavaittu() == false){
 				try {
 					Thread.sleep(400);
 				} catch (InterruptedException e) {
