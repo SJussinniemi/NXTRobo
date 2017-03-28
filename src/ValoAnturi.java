@@ -19,7 +19,7 @@ public class ValoAnturi implements Runnable {
 
 
 	public void run() {
-		// TODO Auto-generated method stub
+		// TaODO Auto-generated method stub
 		while(Ajoluokka.ajossa == true){
 
 

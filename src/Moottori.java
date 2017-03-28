@@ -7,7 +7,7 @@ public class Moottori {
 
 	int vakionopeus = 250;
 	int peruutusnopeus = 10;
-	// Viivanseurauksessa renkaanpyörimisnopeus 
+	// aViivanseurauksessa renkaanpyörimisnopeus 
 	//kun korjataan roboton positiota viivalla
 	int korjausnopeus = 250; 
 

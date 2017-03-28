@@ -6,7 +6,7 @@ import lejos.nxt.MotorPort;
 public class Ajoluokka{
 
 	public static boolean ajossa = true;
-	public static int MAX_DETECT = 50; // Et‰isyys havaitusta objetista kun tehd‰‰n jotain.
+	public static int MAX_DETECT = 50; // sEt‰isyys havaitusta objetista kun tehd‰‰n jotain.
 	
 	
 	public static void main(String[] args) {

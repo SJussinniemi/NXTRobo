@@ -11,7 +11,7 @@ import lejos.robotics.objectdetection.RangeFeatureDetector;
 
 public class UltraAnturi implements Runnable, FeatureListener {
 
-	//Boolea kun este on havaittu ajetaanko t‰ll‰ booleanilla k‰‰ntyminen?
+	//asBoolea kun este on havaittu ajetaanko t‰ll‰ booleanilla k‰‰ntyminen?
 	boolean havaittu;
 	
 	//public static int MAX_DETECT = 60;
