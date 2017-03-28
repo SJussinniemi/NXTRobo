@@ -19,7 +19,7 @@ public class ValoAnturi implements Runnable {
 
 
 	public void run() {
-		// TaODO Auto-generated method stub
+		// TODO Auto-generated method stub
 		while(Ajoluokka.ajossa == true){
 
 
@@ -39,23 +39,45 @@ public class ValoAnturi implements Runnable {
 				LCD.drawInt (SensorPort.S4.readValue ( ) , 4 , 0 , 3 ) ;
 				 */
 
-				if(valoanturi.readValue() >= 31 && valoanturi.readValue() <= 41){
+				if(valoanturi.readValue() >= 44 && valoanturi.readValue() <= 52){
 					motti.eteenpainRobo();
 
-				}else if(valoanturi.readValue() <= 42){
-
+				}else if(valoanturi.readValue() <= 36){
+					//kääntyy oikealle
 					Motor.B.stop();
-					Motor.C.setSpeed(motti.korjausnopeus);
+					Motor.C.setSpeed(motti.getKorjausnopeus());
 					Motor.C.forward();
-
-				}else if(valoanturi.readValue() >= 50){
+					//kääntyy vasemmalle
+				}else if(valoanturi.readValue() >= 55){
 
 					Motor.C.stop();
-					Motor.B.setSpeed(motti.korjausnopeus);
+					Motor.B.setSpeed(motti.getKorjausnopeus());
 					Motor.B.forward();
 
 
 				}
+
+				else if(valoanturi.readValue() <= 40){
+					//kääntyy oikealle
+					Motor.B.flt();
+					Motor.B.setSpeed(motti.getNopeustaakse());
+					Motor.C.setSpeed(motti.getKorjausnopeus());
+					Motor.C.forward();
+					//kääntyy vasemmalle
+				}else if(valoanturi.readValue() >= 60){
+
+					Motor.C.flt();
+					Motor.C.setSpeed(motti.getNopeustaakse());
+					Motor.B.setSpeed(motti.getKorjausnopeus());
+					Motor.B.forward();
+
+
+				}
+
+				//vasen  
+
+
+
 
 			}
 
@@ -63,5 +85,3 @@ public class ValoAnturi implements Runnable {
 
 	}
 }
-
-
