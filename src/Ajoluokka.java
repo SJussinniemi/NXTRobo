@@ -6,7 +6,7 @@ import lejos.nxt.MotorPort;
 public class Ajoluokka{
 
 	public static boolean ajossa = true;
-	public static int MAX_DETECT = 50; // sEt‰isyys havaitusta objetista kun tehd‰‰n jotain.
+	public static int MAX_DETECT = 30; // sEt‰isyys havaitusta objetista kun tehd‰‰n jotain.
 	
 	
 	public static void main(String[] args) {
@@ -26,7 +26,10 @@ public class Ajoluokka{
 		//Ultrasaie.start();
 		Valosaie.start();
 		// Kutsutaan ultra-anturin kuuntelija.
+		
+		
 		Ua.suorita(Ua);
+		
 		
 		
 
@@ -39,7 +42,7 @@ public class Ajoluokka{
 			
 		}
 */
-		Mot.eteenpainRobo();
+		//Mot.eteenpainRobo();
 		//Mot.pysahdyRobo();
 		Button.waitForAnyPress();
 		
