@@ -96,11 +96,11 @@ public class Moottori {
 		pilot.setRotateSpeed(150);
 
 		pilot.rotate(90);
-		pilot.travel(20);
+		pilot.travel(8);
 		pilot.rotate(-90);
-		pilot.travel(20);
+		pilot.travel(8);
 		pilot.rotate(-90);
-		pilot.travel(20);
+		pilot.travel(8);
 		pilot.rotate(90);
 
 		LCD.clear();
