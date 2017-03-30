@@ -24,7 +24,7 @@ public class Anturit implements Runnable {
 
 		while(Ajoluokka.ajossa){
 			try {
-				Thread.sleep(200);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -39,18 +39,20 @@ public class Anturit implements Runnable {
 				Mot.vaistaOikea();
 			}
 			
-			if(valoanturi.readValue() >= 44 && valoanturi.readValue() <= 52){
+			if(valoanturi.readValue() >= 45 && valoanturi.readValue() <= 53){
 				Mot.eteenpainRobo();
 
-			}else if(valoanturi.readValue() <= 36){
+			}else if(valoanturi.readValue() <= 45){
 				//kääntyy oikealle
-				Motor.B.stop();
+				//Motor.B.stop();
+				Motor.B.setSpeed(100);
 				Motor.C.setSpeed(Mot.getKorjausnopeus());
 				Motor.C.forward();
 				//kääntyy vasemmalle
-			}else if(valoanturi.readValue() >= 55){
+			}else if(valoanturi.readValue() >= 53){
 
-				Motor.C.stop();
+				//Motor.C.stop();
+				Motor.C.setSpeed(100);
 				Motor.B.setSpeed(Mot.getKorjausnopeus());
 				Motor.B.forward();
 

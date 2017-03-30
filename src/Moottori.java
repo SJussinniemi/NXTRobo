@@ -8,7 +8,7 @@ import lejos.util.Delay;
 public class Moottori {
 
 	private int vakionopeus = 250; //Robotin nopeus kuljettaessa suoraan eteenpäin
-	private int korjausnopeus = 100; //Renkaan pyörimisnopeus kun korjataan roboton positiota viivalla
+	private int korjausnopeus = 300; //Renkaan pyörimisnopeus kun korjataan roboton positiota viivalla
 	private int estenopeus = 100;
 
 
@@ -42,11 +42,12 @@ public class Moottori {
 
 	public void eteenpainRobo(){
 
-		Motor.B.forward();
-		Motor.C.forward();
+		//Motor.B.forward();
+		//Motor.C.forward();
 
 		Motor.B.setSpeed(vakionopeus);
 		Motor.C.setSpeed(vakionopeus);
+		
 
 	}
 
@@ -55,8 +56,10 @@ public class Moottori {
 		LCD.clear();
 		LCD.drawString("Olen Pysahdorobo metodissa", 0, 0);
 
-		Motor.B.stop();
-		Motor.C.stop();
+		//Motor.B.stop();
+		//Motor.C.stop();
+		Motor.B.flt();
+		Motor.C.flt();
 
 	}
 

@@ -12,7 +12,7 @@ public class Ajoluokka {
 		
 		//Alustetaan oliot
 		Moottori Mot = new Moottori();
-		UltraAnturi Ua = new UltraAnturi(Mot);
+		UltraAnturi Ua = new UltraAnturi();
 		ValoAnturi Va = new ValoAnturi(Mot);
 		Anturit aT = new Anturit(Mot, Ua, Va);
 		
