@@ -32,10 +32,6 @@ public class Anturit implements Runnable {
 
 			LCD.drawString("Valo: ", 0, 6);
 			LCD.drawInt (valoanturi.readValue( ) , 6 , 6);
-			/* LCD.drawInt ( valoanturi.readNormalizedValue ( ) , 4 , 0 , 1 ) ;
-			LCD.drawInt ( SensorPort.S4.readRawValue ( ) , 4 , 0 , 2 );
-			LCD.drawInt (SensorPort.S4.readValue ( ) , 4 , 0 , 3 ) ;
-			 */
 
 			if(us.getDistance() <= Ajoluokka.MAX_DETECT){
 				
@@ -61,22 +57,7 @@ public class Anturit implements Runnable {
 
 			}
 
-			else if(valoanturi.readValue() <= 40){
-				//kääntyy oikealle
-				Motor.B.flt();
-				Motor.B.setSpeed(Mot.getNopeustaakse());
-				Motor.C.setSpeed(Mot.getKorjausnopeus());
-				Motor.C.forward();
-				//kääntyy vasemmalle
-			}else if(valoanturi.readValue() >= 60){
 
-				Motor.C.flt();
-				Motor.C.setSpeed(Mot.getNopeustaakse());
-				Motor.B.setSpeed(Mot.getKorjausnopeus());
-				Motor.B.forward();
-
-
-			}
 
 		}
 
