@@ -9,23 +9,24 @@ import lejos.nxt.UltrasonicSensor;
 public class Anturit implements Runnable {
 
 	private Moottori Mot;
-	private UltraAnturi uA;
+	private Timer Tm;
 	private ValoAnturi vA;
 	public int valolukema;
 	UltrasonicSensor us = new UltrasonicSensor(SensorPort.S1);
 	LightSensor valoanturi = new LightSensor ( SensorPort. S4 ) ;
 
-	public Anturit(Moottori Mot, UltraAnturi uA, ValoAnturi vA){
+	public Anturit(Moottori Mot, Timer Tm, ValoAnturi vA){
 		this.Mot = Mot;
-		this.uA = uA;
+		this.Tm = Tm;
 		this.vA = vA;
 
 	}
 
 	public void run() {
 		
-
+		Tm.aloitaTimer();
 		while(true){
+			
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
@@ -33,7 +34,8 @@ public class Anturit implements Runnable {
 				e.printStackTrace();
 			}
 			
-
+			
+			Tm.tulosTimer();
 			
 			valolukema = valoanturi.readValue();
 			LCD.drawString("Valo: ", 0, 6);
@@ -42,6 +44,7 @@ public class Anturit implements Runnable {
 			if(us.getDistance() <= Ajoluokka.MAX_DETECT){
 				
 				Mot.pysahdyRobo();
+				
 				Ajoluokka.esteLKM++;
 				if(Ajoluokka.esteLKM == 2){
 					Sound.beep();
@@ -49,6 +52,7 @@ public class Anturit implements Runnable {
 					break;
 				}
 				Mot.vaistaOikea();
+				Tm.tulosTimer();
 			}
 			
 			if(valoanturi.readValue() >= 45 && valoanturi.readValue() <= 53){

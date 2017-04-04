@@ -8,7 +8,7 @@ import lejos.util.Delay;
 
 public class Moottori {
 
-	private int vakionopeus = 350; // Robotin nopeus kuljettaessa suoraan eteenpäin
+	private int vakionopeus = 450; // Robotin nopeus kuljettaessa suoraan eteenpäin
 	private int korjausnopeus = 300; // Renkaan pyörimisnopeus kun korjataan roboton positiota viivalla
 	private int estenopeus = 100;
 
@@ -48,9 +48,6 @@ public class Moottori {
 
 	public void pysahdyRobo() {
 
-		LCD.clear();
-		LCD.drawString("Olen Pysahdorobo metodissa", 0, 0);
-
 		Motor.B.flt();
 		Motor.C.flt();
 
@@ -66,13 +63,11 @@ public class Moottori {
 	}
 
 	public void vaistaOikea() {
-		
-		
-		DifferentialPilot pilot = new DifferentialPilot(1.8f, 3.4f, Motor.B,
-				Motor.C);
+			
+		DifferentialPilot pilot = new DifferentialPilot(1.8f, 3.4f, Motor.B, Motor.C);
 		LightSensor valoanturi = new LightSensor(SensorPort.S4);
-		LCD.drawInt(Ajoluokka.esteLKM, 0, 0);
-		Delay.msDelay(1000);
+
+		Delay.msDelay(500);
 
 		// Kääntyminen 
 		pilot.arc(5, 90);
@@ -86,11 +81,5 @@ public class Moottori {
 				break;
 			}
 		}
-
-
-		LCD.clear();
-		LCD.drawString("Kaannetty", 0, 0);
-
 	}
-
 }
