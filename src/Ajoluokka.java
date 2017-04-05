@@ -3,10 +3,24 @@ import lejos.nxt.LCD;
 import lejos.nxt.Motor;
 import lejos.nxt.MotorPort;
 
-public class Ajoluokka {
 
-	public static boolean ajossa = true;
+/**
+ * Ajoluokka. Luokka sis‰lt‰‰ main-metodin. Luokassa alustetaan ohjelmassa
+ * tarvittavat oliot ja k‰ynnistet‰‰n s‰ikeet.
+ * <p>
+ * Olio-ohjelmoinnin harjoitustyˆ/IhanSama/kev‰t 2017
+ * <p>
+ * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+ *
+ */
+
+
+public class Ajoluokka {
+	
+	//public static boolean ajossa = true;
+	/** Robotin havaitsemien esteiden lukum‰‰r‰*/
 	public static int esteLKM = 0;		// Havaittujen esteiden lukum‰‰r‰
+	/** Et‰isyys, jolta robotin ultra-anturi havaitsee esteen*/
 	public static int MAX_DETECT = 25; // Et‰isyys jolta robotti havaitsee esteen (cm)
 
 	public static void main(String[] args) {

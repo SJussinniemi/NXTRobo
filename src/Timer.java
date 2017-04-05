@@ -10,28 +10,43 @@ import lejos.robotics.objectdetection.FeatureListener;
 import lejos.robotics.objectdetection.RangeFeatureDetector;
 import lejos.util.Delay;
 
-public class Timer  {
+/**
+ * Timer-luokka. Luokan attributtien ja metodien avulla luodaan 
+ * sekuntilaskuri, jonka avulla lasketaan robotin viivanseurakseen
+ * kulunut aika. 
+ * <p>
+ * Olio-ohjelmoinnin harjoitustyö/IhanSama/kevät 2017
+ * <p>
+ * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+ *
+ */
 
+public class Timer  {
+	/** sekuntilaskurin alkuaika*/
 	private long aloita;
+	/** sekuntilaskurin loppuaika*/
 	private long lopeta;
+	/** sekuntilaskurin alkuajan ja loppuajan erotus*/
 	private long tulos;
-	private long sekunnit;
-	private int minuutit;
+	
+	//private long sekunnit;
+	//private int minuutit;
 	//private long kokonaisaika;
 
-
+	/** Käynnistetään sekuntilaskuri*/
 	public void aloitaTimer() {
 		
 		aloita = System.currentTimeMillis();
 	}
 
-
+	/** Pysäytetään sekuntilaskuri*/
 	public void lopetaTimer() {
 		
 		lopeta = System.currentTimeMillis();
 		
 	}
-
+	
+	/** Tulostetaan sekuntilaskurin lukema robotin LCD-näytölle*/
 	public void tulosTimer() {
 		
 		lopetaTimer();

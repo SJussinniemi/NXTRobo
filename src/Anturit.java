@@ -5,16 +5,36 @@ import lejos.nxt.SensorPort;
 import lejos.nxt.Sound;
 import lejos.nxt.UltrasonicSensor;
 
+/**
+ * Anturit-luokka. Luokan run-metodissa tapahtuu viivanseuraus 
+ * ja esteen kiertäminen.
+ * <p>
+ * Olio-ohjelmoinnin harjoitustyö/IhanSama/kevät 2017
+ * <p>
+ * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+ *
+ */
 
 public class Anturit implements Runnable {
-
+	
+	/** Moottori-luokan tyhjä viite*/
 	private Moottori Mot;
+	/** Timer-luokan tyhjä viite*/
 	private Timer Tm;
+	/** ValoAnturi-luokan tyhjä viite*/
 	private ValoAnturi vA;
+	/** Valoanturin lukema valoarvo*/
 	public int valolukema;
 	UltrasonicSensor us = new UltrasonicSensor(SensorPort.S1);
 	LightSensor valoanturi = new LightSensor ( SensorPort. S4 ) ;
 
+	/**
+	 * Rakentaja, jossa asetetaan alustettuihin tyhjiin viitteisiin
+	 * rakentajan parametrina saamat oliot.
+	 * @param Mot, parametrina saatu Moottori-luokan olio 
+	 * @param Tm, parametrina saatu Timer-luokan olio 
+	 * @param vA, parametrina saatu ValoAnturi-luokan olio 
+	 */
 	public Anturit(Moottori Mot, Timer Tm, ValoAnturi vA){
 		this.Mot = Mot;
 		this.Tm = Tm;

@@ -5,6 +5,14 @@ import lejos.nxt.ListenerCaller;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 
+/**
+ * Tämä luokka ei enää käytössä!!!!!!!
+ * <p>
+ * Olio-ohjelmoinnin harjoitustyö/IhanSama/kevät 2017
+ * <p>
+ * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+ *
+ */
 
 public class ValoAnturi implements Runnable {
 

@@ -6,11 +6,22 @@ import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
 
-public class Moottori {
+/**
+ * Moottori-luokka. Luokan attributtien ja metodien avulla hallitaan
+ * robotin nopeuksia ja liikkumista. 
+ * <p>
+ * Olio-ohjelmoinnin harjoitustyö/IhanSama/kevät 2017
+ * <p>
+ * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+ *
+ */
 
+public class Moottori {
+	
+	/** Nopeus robotin kulkiessa suoraan eteenpäin*/
 	private int vakionopeus = 450; // Robotin nopeus kuljettaessa suoraan eteenpäin
+	/** Renkaan nopeus, kun korjataan robotin asentoa viivalla*/
 	private int korjausnopeus = 300; // Renkaan pyörimisnopeus kun korjataan roboton positiota viivalla
-	private int estenopeus = 100;
 
 	public int getVakionopeus() {
 		return vakionopeus;
@@ -28,14 +39,8 @@ public class Moottori {
 		this.korjausnopeus = korjausnopeus;
 	}
 
-	public int getEstenopeus() {
-		return estenopeus;
-	}
-
-	public void setEstenopeus(int estenopeus) {
-		this.estenopeus = estenopeus;
-	}
-
+	
+	/** Liikutetaan robottia vakionopeudella suoraan etennpäin*/
 	public void eteenpainRobo() {
 
 		Motor.B.setSpeed(vakionopeus);
@@ -45,7 +50,7 @@ public class Moottori {
 
 	}
 	
-
+	/** Pysäytetään robotin molemmat moottorit*/
 	public void pysahdyRobo() {
 
 		Motor.B.flt();
@@ -53,15 +58,9 @@ public class Moottori {
 
 	}
 
-	public void kaannyVasen() {
-
-		Motor.B.setSpeed(10);
-		Motor.B.forward();
-
-		Motor.C.forward();
-		Motor.C.setSpeed(estenopeus);
-	}
-
+	/**
+	 * TODO
+	 */
 	public void vaistaOikea() {
 			
 		DifferentialPilot pilot = new DifferentialPilot(1.8f, 3.4f, Motor.B, Motor.C);
@@ -70,8 +69,8 @@ public class Moottori {
 		Delay.msDelay(500);
 
 		// Kääntyminen 
-		pilot.arc(5, 90);
-		pilot.travelArc(-5, 15);
+		pilot.arc(4, 90);
+		pilot.travelArc(-4, 15);
 		
 		while(true){
 			
