@@ -1,4 +1,4 @@
-package org.lejos.pcsample.usbsend;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,26 +7,15 @@ import lejos.pc.comm.NXTCommLogListener;
 import lejos.pc.comm.NXTConnector;
  
 /**
- * This is a PC sample. It connects to the NXT, and then
- * sends an integer and waits for a reply, 100 times.
- * 
- * Compile this program with javac (not nxjc), and run it 
- * with java.
- * 
- * You need pccomm.jar on the CLASSPATH and the jfantom.dll
- * DLL or liblibnxt.so shared library on the Java library path.
- * 
- * Run the program by:
- * 
- *   java USBSend
- * 
- * Your NXT should be running a sample such as USBReceive. 
- * 
- * @author Lawrie Griffiths
- *
+ * USBSend luokka hoitaa yhteyden muodostamisen robottiin
+ * sekä tiedon lähettämisen
+ * <p>
+ * Olio-ohjelmoinnin harjoitustyö/IhanSama/kevät 2017
+ * <p>
+ * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
  */
 public class USBSend {	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		NXTConnector conn = new NXTConnector();
 		
 		conn.addLogListener(new NXTCommLogListener(){
@@ -53,11 +42,12 @@ public class USBSend {
 		DataInputStream inDat = new DataInputStream(conn.getInputStream());
 		DataOutputStream outDat = new DataOutputStream(conn.getOutputStream());
 		
-		String x = "Valtsu";
+		//Näyttöön tuleva teksti
+		String x = "Mr.Valtteri";
 		//for(int i=0;i<100;i++) 
 	//	{
 			try {
-			   outDat.writeUTF(x);
+			   outDat.writeUTF(x); //robotille lähtevä data
 			   outDat.flush();
 	
 			} catch (IOException ioe) {
@@ -65,15 +55,6 @@ public class USBSend {
 			}
 	        
 			try {
-	        	 x = inDat.readUTF();
-	        } catch (IOException ioe) {
-	           System.err.println("IO Exception reading reply");
-	           
-	        }            
-	      //  System.out.println("Sent " +i + " Received " + x);
-	//	} 
-		
-		try {
 			inDat.close();
 			outDat.close();
 			System.out.println("Closed data streams");
