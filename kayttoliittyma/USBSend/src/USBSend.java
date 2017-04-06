@@ -16,6 +16,15 @@ import lejos.pc.comm.NXTConnector;
  */
 public class USBSend {	
 	public static void main(String[] args) throws IOException {
+
+		String nimi;
+		
+		
+		
+	}
+	
+	public void ajaKysely(String n){
+	
 		NXTConnector conn = new NXTConnector();
 		
 		conn.addLogListener(new NXTCommLogListener(){
@@ -43,7 +52,9 @@ public class USBSend {
 		DataOutputStream outDat = new DataOutputStream(conn.getOutputStream());
 		
 		//Näyttöön tuleva teksti
-		String x = "Mr.Valtteri";
+		
+		//String x = "Mr.Valtteri";
+		String x = n;
 		//for(int i=0;i<100;i++) 
 	//	{
 			try {
@@ -69,4 +80,5 @@ public class USBSend {
 			System.err.println("IO Exception Closing connection");
 		}
 	}
+
 }
