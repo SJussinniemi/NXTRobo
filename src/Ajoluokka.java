@@ -32,7 +32,7 @@ public class Ajoluokka {
 
 	public static void main(String[] args) throws IOException {
 		
-		LCD.drawString("Odottaa yhteyttä", 0, 0);
+		LCD.drawString("Odottaa yhteytta", 0, 0);
 		USBConnection conn = USB.waitForConnection();
 		DataOutputStream dOut = conn.openDataOutputStream();
 		DataInputStream dIn = conn.openDataInputStream();
