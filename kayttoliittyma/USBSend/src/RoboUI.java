@@ -73,12 +73,12 @@ public class RoboUI {
 		//usbYhteys.
 		//textField.setBounds(157, 76, 115, 20);
 		
-		JLabel lblAnnaRobolleNimi = new JLabel("Anna Robolle nimi");
+		JLabel lblAnnaRobolleNimi = new JLabel("Anna Robolle nimi"); // Otsikko Label
 		lblAnnaRobolleNimi.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAnnaRobolleNimi.setBounds(147, 26, 149, 46);
 		frame.getContentPane().add(lblAnnaRobolleNimi);
 		
-		textField = new JTextField();
+		textField = new JTextField(); // Tekstikenttä johon kirjataan robotin nimi
 		textField.setBounds(171, 83, 86, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);

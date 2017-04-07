@@ -50,7 +50,8 @@ public class USBSend {
 			System.err.println("NXT laitetta ei havaittu");
 			System.exit(1);
 		}
-
+		
+		// Alustetana tietovirta oliot
 		DataInputStream inDat = new DataInputStream(conn.getInputStream());
 		DataOutputStream outDat = new DataOutputStream(conn.getOutputStream());
 

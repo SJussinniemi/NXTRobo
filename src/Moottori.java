@@ -21,6 +21,7 @@ public class Moottori {
 	/** Renkaan nopeus, kun korjataan robotin asentoa viivalla*/
 	private int korjausnopeus = 300; // Renkaan pyörimisnopeus kun korjataan roboton positiota viivalla
 
+	// Getterit ja Setterit
 	public int getVakionopeus() {
 		return vakionopeus;
 	}
@@ -57,10 +58,12 @@ public class Moottori {
 	}
 
 	/**
-	 * TODO
+	 * vaistaOikea suorittaa esteen väistämisen kun Ultraäänianturi havaitsee esteen radalla.
+	 * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
 	 */
 	public void vaistaOikea() {
-			
+		
+		//Alustetaan pilot ja valoanturi oliot.
 		DifferentialPilot pilot = new DifferentialPilot(1.8f, 3.4f, Motor.B, Motor.C);
 		LightSensor valoanturi = new LightSensor(SensorPort.S4);
 
@@ -71,10 +74,12 @@ public class Moottori {
 		// Kääntyminen "Takaisin radalle"
 		pilot.travelArc(-4.3, 15);
 		
+		// Kääntämisen jälkeen robotti ajaa suoraan takaisin kunnes löytää radan.
 		while(true){
 			
 			eteenpainRobo();
 			
+			// loop suljetaan kun valoanturin arvo vastaa mustaa väriä.
 			if(valoanturi.readValue() <= 40){
 				break;
 			}

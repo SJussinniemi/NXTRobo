@@ -19,9 +19,6 @@ public class Timer  {
 	/** sekuntilaskurin alkuajan ja loppuajan erotus*/
 	private long tulos;
 	
-	//private long sekunnit;
-	//private int minuutit;
-	//private long kokonaisaika;
 
 	/** Käynnistetään sekuntilaskuri*/
 	public void aloitaTimer() {
@@ -42,11 +39,8 @@ public class Timer  {
 		lopetaTimer();
 		
 		tulos = lopeta - aloita;
-		
-		//kokonaisaika = tulos / 1000;
-		//tulos = kokonaisaika;
-		
-		
+
+		// Tulostetaan kulunutta aikaa robotin näytölle.		
 		LCD.drawString("Aika:", 0, 1);
 		//seknnit
 		LCD.drawString("Sec:", 0, 3);
