@@ -17,7 +17,8 @@ import lejos.util.Delay;
 public class Moottori {
 	
 	/** Nopeus robotin kulkiessa suoraan eteenpäin*/
-	private int vakionopeus = 450; // Robotin nopeus kuljettaessa suoraan eteenpäin
+	// 450
+	private int vakionopeus = 350; // Robotin nopeus kuljettaessa suoraan eteenpäin
 	/** Renkaan nopeus, kun korjataan robotin asentoa viivalla*/
 	private int korjausnopeus = 300; // Renkaan pyörimisnopeus kun korjataan roboton positiota viivalla
 
@@ -72,6 +73,7 @@ public class Moottori {
 		// Kääntyminen "Eka puolisko"
 		pilot.arc(4, 90);
 		// Kääntyminen "Takaisin radalle"
+		// 3.3
 		pilot.travelArc(-4.3, 15);
 		
 		// Kääntämisen jälkeen robotti ajaa suoraan takaisin kunnes löytää radan.
