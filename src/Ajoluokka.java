@@ -2,11 +2,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
-
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
-import lejos.nxt.Motor;
-import lejos.nxt.MotorPort;
 import lejos.nxt.comm.USB;
 import lejos.nxt.comm.USBConnection;
 

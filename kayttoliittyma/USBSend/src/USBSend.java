@@ -1,8 +1,6 @@
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-
 import lejos.pc.comm.NXTCommLogListener;
 import lejos.pc.comm.NXTConnector;
 
@@ -19,6 +17,15 @@ public class USBSend {
 
 	}
 
+	
+	/**
+	 * 
+	 * ajaKysely suorittaa Tietokoneen ja NXT robotin välisen yhteyden muodostamisen
+	 * sekä lähettää käyttöliittymän kautta annetun String tyypin muuttujan robotin näytölle esitettäväksi
+	 * 
+	 * @param n = Vastaanotetaan RoboUI.javan textField oliosta, tässä tarkoituksessa sillä käsitellään robotin nimeä.
+	 * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+	 */
 	public void ajaKysely(String n){
 
 		NXTConnector conn = new NXTConnector();
@@ -36,9 +43,9 @@ public class USBSend {
 
 			}
 
-		} 
-				);
+		});
 
+		// Etsitään USB yhteyttä
 		if (!conn.connectTo("usb://")){
 			System.err.println("NXT laitetta ei havaittu");
 			System.exit(1);
@@ -48,7 +55,7 @@ public class USBSend {
 		DataOutputStream outDat = new DataOutputStream(conn.getOutputStream());
 
 		//Näyttöön tuleva teksti
-		String x = n;		// String joka käsittelee robotin nimen
+		String x = n;		// String joka käsittelee robotin nimen, n = Tämän olion vastaanottama parametri
 
 		try {
 			outDat.writeUTF(x); //robotille lähtevä data

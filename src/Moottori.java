@@ -1,7 +1,5 @@
-import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.nxt.Motor;
-import lejos.nxt.MotorPort;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
