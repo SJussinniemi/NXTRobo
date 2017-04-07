@@ -1,17 +1,28 @@
-import lejos.nxt.LCD;
 import lejos.nxt.LightSensor;
 import lejos.nxt.Motor;
-import lejos.nxt.MotorPort;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
 
+/**
+ * Moottori-luokka. Luokan attributtien ja metodien avulla hallitaan
+ * robotin nopeuksia ja liikkumista. 
+ * <p>
+ * Olio-ohjelmoinnin harjoitustyˆ/IhanSama/kev‰t 2017
+ * <p>
+ * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+ *
+ */
+
 public class Moottori {
-
+	
+	/** Nopeus robotin kulkiessa suoraan eteenp‰in*/
+	// 450
 	private int vakionopeus = 350; // Robotin nopeus kuljettaessa suoraan eteenp‰in
+	/** Renkaan nopeus, kun korjataan robotin asentoa viivalla*/
 	private int korjausnopeus = 300; // Renkaan pyˆrimisnopeus kun korjataan roboton positiota viivalla
-	private int estenopeus = 100;
 
+	// Getterit ja Setterit
 	public int getVakionopeus() {
 		return vakionopeus;
 	}
@@ -28,14 +39,8 @@ public class Moottori {
 		this.korjausnopeus = korjausnopeus;
 	}
 
-	public int getEstenopeus() {
-		return estenopeus;
-	}
-
-	public void setEstenopeus(int estenopeus) {
-		this.estenopeus = estenopeus;
-	}
-
+	
+	/** Liikutetaan robottia vakionopeudella suoraan etennp‰in*/
 	public void eteenpainRobo() {
 
 		Motor.B.setSpeed(vakionopeus);
@@ -45,52 +50,41 @@ public class Moottori {
 
 	}
 	
-
+	/** Pys‰ytet‰‰n robotin molemmat moottorit*/
 	public void pysahdyRobo() {
-
-		LCD.clear();
-		LCD.drawString("Olen Pysahdorobo metodissa", 0, 0);
 
 		Motor.B.flt();
 		Motor.C.flt();
 
 	}
 
-	public void kaannyVasen() {
-
-		Motor.B.setSpeed(10);
-		Motor.B.forward();
-
-		Motor.C.forward();
-		Motor.C.setSpeed(estenopeus);
-	}
-
+	/**
+	 * vaistaOikea suorittaa esteen v‰ist‰misen kun Ultra‰‰nianturi havaitsee esteen radalla.
+	 * @author Matti Pahkuri, Sami Jussinniemi, Valtteri Lattu HAMK
+	 */
 	public void vaistaOikea() {
 		
-		
-		DifferentialPilot pilot = new DifferentialPilot(1.8f, 3.4f, Motor.B,
-				Motor.C);
+		//Alustetaan pilot ja valoanturi oliot.
+		DifferentialPilot pilot = new DifferentialPilot(1.8f, 3.4f, Motor.B, Motor.C);
 		LightSensor valoanturi = new LightSensor(SensorPort.S4);
-		LCD.drawInt(Ajoluokka.esteLKM, 0, 0);
-		Delay.msDelay(1000);
 
-		// K‰‰ntyminen 
-		pilot.arc(5, 90);
-		pilot.travelArc(-5, 15);
+		Delay.msDelay(500);
+
+		// K‰‰ntyminen "Eka puolisko"
+		pilot.arc(4, 90);
+		// K‰‰ntyminen "Takaisin radalle"
+		// 3.3
+		pilot.travelArc(-4.3, 15);
 		
+		// K‰‰nt‰misen j‰lkeen robotti ajaa suoraan takaisin kunnes lˆyt‰‰ radan.
 		while(true){
 			
 			eteenpainRobo();
 			
+			// loop suljetaan kun valoanturin arvo vastaa mustaa v‰ri‰.
 			if(valoanturi.readValue() <= 40){
 				break;
 			}
 		}
-
-
-		LCD.clear();
-		LCD.drawString("Kaannetty", 0, 0);
-
 	}
-
 }
