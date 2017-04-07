@@ -1,9 +1,12 @@
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
+import java.io.File;
 import java.io.IOException;
+
 import lejos.nxt.Button;
 import lejos.nxt.LCD;
+import lejos.nxt.Sound;
 import lejos.nxt.comm.USB;
 import lejos.nxt.comm.USBConnection;
 
@@ -28,6 +31,9 @@ public class Ajoluokka {
 
 	public static void main(String[] args) throws IOException {
 
+		
+		
+		
 		
 		//Alustetaan oliot
 		Moottori Mot = new Moottori();
@@ -69,6 +75,7 @@ public class Ajoluokka {
 
 		// Ohjelma aloittaa suorittamisen napin painalluksen j‰lkeen
 		Button.waitForAnyPress();
+		
 
 		//K‰ynnistet‰‰n s‰ie viivan- ja esteen haistelua varten
 		Sensorit.start();

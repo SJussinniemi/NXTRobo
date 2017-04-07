@@ -1,8 +1,11 @@
+import java.io.File;
+
 import lejos.nxt.LightSensor;
 import lejos.nxt.Motor;
 import lejos.nxt.SensorPort;
 import lejos.robotics.navigation.DifferentialPilot;
 import lejos.util.Delay;
+import lejos.nxt.Sound;
 
 /**
  * Moottori-luokka. Luokan attributtien ja metodien avulla hallitaan
@@ -57,6 +60,9 @@ public class Moottori {
 		Motor.C.flt();
 
 	}
+	
+	
+	
 
 	/**
 	 * vaistaOikea suorittaa esteen v‰ist‰misen kun Ultra‰‰nianturi havaitsee esteen radalla.
@@ -72,6 +78,7 @@ public class Moottori {
 
 		// K‰‰ntyminen "Eka puolisko"
 		pilot.arc(4, 90);
+		Sound.playSample(new File("arnoldBack.wav"));
 		// K‰‰ntyminen "Takaisin radalle"
 		// 3.3
 		pilot.travelArc(-4.3, 15);

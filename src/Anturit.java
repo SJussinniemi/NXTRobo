@@ -65,14 +65,17 @@ public class Anturit implements Runnable {
 				
 				Mot.pysahdyRobo();
 				
+				
 				Ajoluokka.esteLKM++;
 				if(Ajoluokka.esteLKM == 2){
 					Sound.beep();
+					
 					//Ajoluokka.ajossa = false;
 					break;
 				}
 				Mot.vaistaOikea();
 				Tm.tulosTimer();
+				
 			}
 			
 			if(valoanturi.readValue() >= 45 && valoanturi.readValue() <= 53){
