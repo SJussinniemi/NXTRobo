@@ -32,8 +32,7 @@ public class Ajoluokka {
 		//Alustetaan oliot
 		Moottori Mot = new Moottori();
 		Timer Tm = new Timer();
-		ValoAnturi Va = new ValoAnturi(Mot);
-		Anturit aT = new Anturit(Mot, Tm, Va);
+		Anturit aT = new Anturit(Mot, Tm);
 
 		//Alustetaan Sensorit
 		Thread Sensorit = new Thread(aT);

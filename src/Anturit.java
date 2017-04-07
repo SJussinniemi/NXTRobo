@@ -21,12 +21,13 @@ public class Anturit implements Runnable {
 	private Moottori Mot;
 	/** Timer-luokan tyhjä viite*/
 	private Timer Tm;
-	/** ValoAnturi-luokan tyhjä viite*/
-	private ValoAnturi vA;
+
+
+	/** Alustetaan anturi oliot*/
+	UltrasonicSensor us = new UltrasonicSensor(SensorPort.S1);
+	LightSensor valoanturi = new LightSensor ( SensorPort. S4 );
 	/** Valoanturin lukema valoarvo*/
 	public int valolukema;
-	UltrasonicSensor us = new UltrasonicSensor(SensorPort.S1);
-	LightSensor valoanturi = new LightSensor ( SensorPort. S4 ) ;
 
 	/**
 	 * Rakentaja, jossa asetetaan alustettuihin tyhjiin viitteisiin
@@ -35,10 +36,9 @@ public class Anturit implements Runnable {
 	 * @param Tm, parametrina saatu Timer-luokan olio 
 	 * @param vA, parametrina saatu ValoAnturi-luokan olio 
 	 */
-	public Anturit(Moottori Mot, Timer Tm, ValoAnturi vA){
+	public Anturit(Moottori Mot, Timer Tm){
 		this.Mot = Mot;
 		this.Tm = Tm;
-		this.vA = vA;
 
 	}
 
