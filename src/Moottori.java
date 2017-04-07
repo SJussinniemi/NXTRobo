@@ -68,9 +68,10 @@ public class Moottori {
 
 		Delay.msDelay(500);
 
-		// K‰‰ntyminen 
+		// K‰‰ntyminen "Eka puolisko"
 		pilot.arc(4, 90);
-		pilot.travelArc(-4, 15);
+		// K‰‰ntyminen "Takaisin radalle"
+		pilot.travelArc(-4.3, 15);
 		
 		while(true){
 			

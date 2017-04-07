@@ -56,11 +56,15 @@ public class RoboUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		/**
+		 * Lähetä nappi ottaa tekstikentän arvon ja vie sen robotin alkunäyttöön.
+		 * 
+		 */
 		JButton btnLhet = new JButton("L\u00E4het\u00E4");
 		btnLhet.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				
-				usbYhteys.ajaKysely(textField.getText());
+				usbYhteys.ajaKysely(textField.getText()); // Antaa ajakysely metodille tekstikentän arvon lähetettäväksi
 				
 			}
 		});
